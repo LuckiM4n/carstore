@@ -5,7 +5,7 @@
   Time: 20:33
   To change this template use File | Settings | File Templates.
 --%>
-!DOCTYPE html>
+
 <html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
@@ -19,11 +19,18 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Action</th>
         </tr>
         <c:forEach var="car" items="${cars}">
             <tr>
-                <td></td>
+                <td>${car.id}</td>
                 <td>${car.name}</td>
+                <td>
+                    <form action="/delete-car" method="post">
+                        <input type="hidden" id="id" name="id" value="${car.id}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
             </tr>
         </c:forEach>
     </table>
